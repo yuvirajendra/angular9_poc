@@ -1,0 +1,21 @@
+<p [class.btnstyle_green]="isTrue">sample works!</p>
+<p [ngClass]="multiStyle">Multiple Style</p>
+<div>
+	<input [disabled]="isTrue" [id]="myId" [(ngModel)]="var1" /><br/><br/>
+	<input disabled="{{isTrue}}" id="yuvi2" type="text" value="Yuvi"/><br/><br/>
+	<input #yourId type="text" /><br/><br/>
+
+	<h2 *ngIf="isTrue; else surenBlock">Hello Suren!</h2>
+
+	<ng-template #surenBlock>
+		<h2>Hello Yuvi!</h2>
+	</ng-template>
+
+	<div *ngFor="let strLt of strList; index as k;">
+		<h3>{{k}}. {{strLt | uppercase | slice : 0 : 5}}</h3>
+	</div>
+	
+	<button (click)="callOnClick()">Alert</button><br/><br/>
+	<button (click)="onClickOfSubmit(yourId)">Submit</button>
+	<!-- <app-display [objDisplay]="objSampleUser"></app-display> -->
+</div>

@@ -1,0 +1,74 @@
+<form [formGroup]="movieFormGroup">
+	<table>
+		<tr>
+			<td>Filter by:				
+				<select name="filterBy" #filterById (change)="displayMovieDetails(filterById.value)">
+					<option selected="true">Select</option>
+					<option *ngFor="let movielst of movieReviewList; index as i" [value]="i">
+						{{movielst.name}}
+					</option>
+				</select>
+			</td>
+		</tr>
+		<tr>
+			<td>
+				Movie Name: <input type="text" name="movieName" formControlName="name" /><br/>
+				<div *ngIf="movieFormGroup.get('name').hasError('required')">
+					Movie Name is required
+				</div>
+				<div *ngIf="movieFormGroup.get('name').hasError('pattern')">
+					Invalid Movie name
+				</div>
+			</td>
+		</tr>
+		
+		<tr>
+			<td>
+				Movie Category: <select name="movieCategory" formControlName="category">
+							<option selected="true">Select</option>
+							<option *ngFor="let category of categoryList.genre; index as i" [value]="i">
+								{{category}}
+							</option>
+
+							<!-- <option>Romance</option>
+							<option>Comedy</option>
+							<option>Horror</option> -->
+						</select> <br/>
+				<div *ngIf="movieFormGroup.get('category').hasError('required')">
+					Movie Category is required
+				</div>
+			</td>
+		</tr>
+		<tr>
+			<td>
+				Year of Release: <input type="text" name="yearOfRelease" formControlName="releaseYear" /> <br/>
+				<div *ngIf="movieFormGroup.get('releaseYear').errors as objErrReleaseYear">
+					Year of release should be between {{objErrReleaseYear.releaseYear.min}} and {{objErrReleaseYear.releaseYear.max}}
+				</div>
+			</td>				
+		</tr>
+		<tr>
+			<td>
+				Rating: <select name="rating" formControlName="rating">
+							<option selected="true">Select</option>
+							<option>1</option>
+							<option>2</option>
+							<option>3</option>
+							<option>4</option>
+							<option>5</option>
+						</select>
+			</td>
+		</tr>
+		<tr>
+			<td>
+				Review Comments: <input type="text" name="reviewComments" formControlName="reviewComments" />
+			</td>
+		</tr>
+		<tr>
+			<td>
+				<button (click)="movieFormSumbit(movieFormGroup.value)" [disabled]="!movieFormGroup.valid">Add</button>
+				<button (click)="deleteReview()">Delete</button>
+			</td>
+		</tr>
+	</table>		
+</form>

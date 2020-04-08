@@ -1,0 +1,19 @@
+<p>User Details</p>
+<form [formGroup]="formElements" (ngSubmit)="formSubmit(formElements.value)">
+	Name: <input type="text" name="userName" id="userName" formControlName="name"><br/><br/>
+	<div *ngIf="formElements.get('name').hasError('pattern')" class="alert alert-danger">
+		Invalid User name - Pattern
+	</div>
+
+	<div *ngIf="formElements.get('name').hasError('required')" class="alert alert-danger">
+		User name is required
+	</div><br/>
+
+	Age: <input type="text" name="userAge" formControlName="age"><br/><br/>
+	<div *ngIf="formElements.get('age').errors as objError" class="alert alert-danger">
+		Age should be between {{objError.age.min}} and {{objError.age.max}}
+	</div><br/>
+
+	City: <input type="text" name="userCity" formControlName="city"/><br/><br/>
+	<button type="submit" [disabled]="!formElements.valid">Login</button>
+</form>

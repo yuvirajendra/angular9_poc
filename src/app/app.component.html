@@ -1,0 +1,17 @@
+<!-- <span>{{ title }} app is running!</span> -->
+<!-- <app-sample></app-sample>
+<app-display [objDisplay]="objUser" 
+			(objLoginEmitter)="customMethod($event)"></app-display> -->
+
+<div>
+	<app-movie [movieReviewList]="addMovieReviewList" (addMovieReview)="addMovieReviewLst($event)" 
+				(deleteMovieReview)="deleteMovieReviewLst()"></app-movie>
+
+	<div *ngFor="let addMovie of addMovieReviewList">
+		<h3>{{addMovie.name}}</h3>
+		<h4>{{addMovie.category}}</h4>
+		<h4>{{addMovie.releaseYear}}</h4>
+		<h4>{{addMovie.rating}}</h4>
+		<h4>{{addMovie.reviewComments}}</h4>
+	</div>
+</div>
