@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { MovieService } from './movie.service';
 
 @Component({
   selector: 'app-component',
@@ -10,20 +11,11 @@ export class AppComponent {
 
   objUser = {name: 'Yuvi', age: 32, city: 'Irving'};
 
-  addMovieReviewList = [{
-    name: 'Alaipayuthey',
-    category: 'Romance',
-    releaseYear: '1999',
-    rating: 5,
-    reviewComments: ''
-  },
-  {
-    name: 'Thenaali',
-    category: 'Comedy',
-    releaseYear: '2001',
-    rating: 4,
-    reviewComments: ''
-  }];
+  tempMovieList: any;
+
+  constructor(private objMovieService: MovieService) {
+    this.tempMovieList = objMovieService.getMovieList();
+  }
 
   customMethod(event: any): void {
     console.log('Emitted event Name: ' + event.name);
@@ -33,11 +25,12 @@ export class AppComponent {
 
   addMovieReviewLst(moviereview: any): void {
     console.log('Add Emitter');
-    this.addMovieReviewList.push(moviereview);
+    console.log(moviereview);
+    this.objMovieService.getMovieList().push(moviereview);
   }
 
   deleteMovieReviewLst(): void {
     console.log('Delete Emitter');
-    this.addMovieReviewList.pop();
+    this.objMovieService.getMovieList().pop();
   }
 }

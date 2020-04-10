@@ -1,5 +1,5 @@
 import { Component, OnInit, Output, EventEmitter, Input, Inject } from '@angular/core';
-import { FormGroup, FormControl, Validators } from '@angular/forms';
+import { FormGroup, FormControl, Validators, FormBuilder } from '@angular/forms';
 import { categoryToken } from './CategoryConst';
 
 @Component({
@@ -15,19 +15,20 @@ export class MovieComponent implements OnInit {
   @Output() deleteMovieReview = new EventEmitter();
 
   constructor(
-    @Inject(categoryToken) public categoryList
+    @Inject(categoryToken) public categoryList,
+    private objFormBuilder: FormBuilder
   ) {}
  
   ngOnInit(): void {
-    this.movieFormGroup = new FormGroup({
-      name: new FormControl('', Validators.compose([
+    this.movieFormGroup = this.objFormBuilder.group({
+      name: this.objFormBuilder.control('', Validators.compose([
         Validators.required,
         Validators.pattern('\\w[A-Za-z]+')
       ])),
-      category: new FormControl('', Validators.required),
-      releaseYear: new FormControl('', this.releaseYearValidator),
-      rating: new FormControl(''),
-      reviewComments: new FormControl('')
+      category: this.objFormBuilder.control('', Validators.required),
+      releaseYear: this.objFormBuilder.control('', this.releaseYearValidator),
+      rating: this.objFormBuilder.control(''),
+      reviewComments: this.objFormBuilder.control('')
     })
   }
 

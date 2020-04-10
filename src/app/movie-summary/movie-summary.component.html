@@ -1,0 +1,14 @@
+<h2>Movie Summary </h2>
+<table>
+	<tr>
+		<th *ngFor="let mColumn of movieColumns">
+			{{mColumn}}
+		</th>
+	</tr>
+	<tr *ngFor="let movieSummary of movieSummaryList">
+		<td *ngFor="let col of movieColumns">
+			{{movieSummary[col]}}
+		</td>
+	</tr>
+</table>
+<button (click)="fetchMore()">Fetch More</button>
