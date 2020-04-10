@@ -3,7 +3,8 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
-  production: false
+  production: false,
+  movieInfoUrl: 'https://my-json-server.typicode.com/suren2k17/dummyAPI/movies'
 };
 
 /*
