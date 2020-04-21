@@ -1,4 +1,7 @@
 <h2>Movie Summary </h2>
+<div *ngIf="fetch">
+	<h2>Loading....</h2>
+</div>
 <table>
 	<tr>
 		<th *ngFor="let mColumn of movieColumns">
@@ -11,4 +14,8 @@
 		</td>
 	</tr>
 </table>
-<button (click)="fetchMore()">Fetch More</button>
+<button (click)="fetchMore()">Fetch More</button><br/>
+<input type="text" #searchId /><br/>
+<button (click)="searchById(searchId.value)">Search By ID</button><br/>
+<button (click)="onPost()">Using HTTP Post</button><br/>
+<h2 *ngIf="errorMessage">{{errorMessage}}</h2>

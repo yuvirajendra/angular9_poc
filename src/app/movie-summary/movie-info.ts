@@ -6,3 +6,11 @@ export interface MovieInfo {
 	rating: number;
     review: string;
 }
+
+export interface SearchInfo {
+	postId: number;
+	id: number;
+    name: string;
+    emailId: number;
+	body: string;
+}
