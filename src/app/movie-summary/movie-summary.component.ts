@@ -1,16 +1,18 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { MovieInfoService } from './movie-info.service';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-movie-summary',
   templateUrl: './movie-summary.component.html',
   styleUrls: ['./movie-summary.component.css']
 })
-export class MovieSummaryComponent implements OnInit {
+export class MovieSummaryComponent implements OnInit, OnDestroy {
   movieColumns = ['id', 'name', 'releaseDate', 'genre', 'rating', 'review'];
   movieSummaryList = [];
   errorMessage = null;
   fetch = false;
+  private fetchSubscription: Subscription;
 
   constructor(private _movieInfoService: MovieInfoService) { }
 
@@ -22,7 +24,8 @@ export class MovieSummaryComponent implements OnInit {
     this.fetch = true;
     this.errorMessage = null;
     this.movieColumns = ['id', 'name', 'releaseDate', 'genre', 'rating', 'review'];
-    this._movieInfoService.getMoreMovieDetails().subscribe(
+
+    this.fetchSubscription = this._movieInfoService.getMoreMovieDetails().subscribe(
       movieInfoList => {
         this.fetch = false;
         this.movieSummaryList = movieInfoList;
@@ -31,6 +34,7 @@ export class MovieSummaryComponent implements OnInit {
           this.fetch = false;
           this.errorMessage = error.message;
       }
+      //setTimeout()
     );
 
     console.log("************* Subscribe **********");
@@ -66,5 +70,10 @@ export class MovieSummaryComponent implements OnInit {
         console.log(postResponse);
       }
     );
+  }
+
+  ngOnDestroy() {
+    console.log("************ In Destroy method ************");
+    //this.fetchSubscription.unsubscribe();
   }
 }

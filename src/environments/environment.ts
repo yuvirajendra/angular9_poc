@@ -4,7 +4,7 @@
 
 export const environment = {
   production: false,
-  movieInfoUrl: 'http://localhost:8080/api/getMovieInfo', // 'https://my-json-server.typicode.com/suren2k17/dummyAPI/movie',
+  movieInfoUrl: 'https://my-json-server.typicode.com/suren2k17/dummyAPI/movies',  // 'http://localhost:8080/api/getMovieInfo',
   searchInfoUrl: 'https://jsonplaceholder.typicode.com/comments',
   postUrl: 'https://jsonplaceholder.typicode.com/posts'
 };

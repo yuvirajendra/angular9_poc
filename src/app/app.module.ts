@@ -1,6 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import { CommonModule } from '@angular/common'; // Commenting this because CommonModule is added in FeatureModule
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { SampleComponent } from './sample/sample.component';
@@ -11,6 +11,8 @@ import { MovieComponent } from './movie/movie.component';
 import { categoryToken, movieCategory } from './movie/CategoryConst';
 import { MovieService } from './movie.service';
 import { MovieSummaryComponent } from './movie-summary/movie-summary.component';
+import { HomeComponent } from './home/home.component';
+import { CustomRoute } from './app-route';
 
 @NgModule({
   declarations: [
@@ -18,7 +20,8 @@ import { MovieSummaryComponent } from './movie-summary/movie-summary.component';
     SampleComponent,
     DisplayComponent,
     MovieComponent,
-    MovieSummaryComponent
+    MovieSummaryComponent,
+    HomeComponent
   ],
   imports: [
     BrowserModule,
@@ -26,7 +29,8 @@ import { MovieSummaryComponent } from './movie-summary/movie-summary.component';
     FormsModule,
     ReactiveFormsModule,
     CommonModule,
-    HttpClientModule
+    HttpClientModule,
+    CustomRoute
   ],
   providers: [{provide: categoryToken, useValue: movieCategory},
               MovieService],

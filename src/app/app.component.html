@@ -2,8 +2,20 @@
 <!-- <app-sample></app-sample>
 <app-display [objDisplay]="objUser" 
 			(objLoginEmitter)="customMethod($event)"></app-display> -->
+<nav>
+	<a routerLink="summary">Movie Summary</a><br>
+	<a routerLink="movie">Movie Info</a><br>
+	<a routerLink="display">Display Component</a><br>
+	<a routerLink="sample">Sample Component</a><br>
+	<a routerLink="feature1/flex">Flex Component</a><br>
+	<a routerLink="feature1/custom1">Custom Component 1</a><br>
+	<a routerLink="yuvi">Default Component</a>
+</nav>
+<div class="displayMessageStyle">
+    {{displayMessage}}
+</div>
 
-<div>
+<!-- <div>
 	<app-movie [movieReviewList]="tempMovieList" (addMovieReview)="addMovieReviewLst($event)" 
 				(deleteMovieReview)="deleteMovieReviewLst()"></app-movie>
 
@@ -13,7 +25,8 @@
 		<h4>{{addMovie.releaseYear}}</h4>
 		<h4>{{addMovie.rating}}</h4>
 		<h4>{{addMovie.reviewComments}}</h4>
-	</div>
+	</div>-->
 
-	<app-movie-summary></app-movie-summary>
-</div>
+	<!-- <app-movie-summary></app-movie-summary> -->
+<!-- </div>  -->
+<router-outlet></router-outlet>

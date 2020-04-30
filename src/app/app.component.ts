@@ -13,8 +13,14 @@ export class AppComponent {
 
   tempMovieList: any;
 
+  displayMessage = "Hi Suren...";
+
   constructor(private objMovieService: MovieService) {
     this.tempMovieList = objMovieService.getMovieList();
+
+    setTimeout(() => {
+      this.displayMessage = "Hi Yuvi...";
+    }, 3000);
   }
 
   customMethod(event: any): void {
